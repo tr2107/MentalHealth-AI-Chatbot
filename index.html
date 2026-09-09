@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindCare AI — Mental Wellness Chatbot</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">🌿</span>
+      <div>
+        <h1>MindCare AI</h1>
+        <p class="tagline">A space to talk things through</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="breathing-btn" class="header-btn" type="button">🫁 Breathing Exercise</button>
+      <button id="clear-btn" class="header-btn header-btn-ghost" type="button">Clear chat</button>
+    </div>
+  </header>
+
+  <!-- PRIVACY BANNER -->
+  <div class="privacy-banner">
+    🔒 Your conversations are not permanently stored by this application.
+  </div>
+
+  <main class="main-layout">
+
+    <!-- CHAT PANEL -->
+    <section class="chat-panel" aria-label="Conversation">
+      <div id="chat-window" class="chat-window">
+        <!-- Welcome message injected here by script.js -->
+      </div>
+
+      <div id="typing-indicator" class="typing-indicator hidden" aria-live="polite">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="typing-label">MindCare AI is typing…</span>
+      </div>
+
+      <form id="chat-form" class="chat-input-row" autocomplete="off">
+        <input
+          id="chat-input"
+          type="text"
+          placeholder="Type how you're feeling…"
+          aria-label="Type your message"
+          maxlength="2000"
+          required
+        />
+        <button type="submit" class="send-btn" aria-label="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12L21 3L14 21L11 13L3 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Quick support">
+      <div class="sidebar-card">
+        <h2>Quick Support</h2>
+        <div class="quick-buttons">
+          <button class="quick-btn" data-message="I'm feeling stressed">😣 I'm feeling stressed</button>
+          <button class="quick-btn" data-message="I'm overthinking everything">🌀 I'm overthinking</button>
+          <button class="quick-btn" data-message="I feel overwhelmed">🌊 I feel overwhelmed</button>
+          <button class="quick-btn" data-message="I need some motivation">✨ I need motivation</button>
+          <button class="quick-btn" data-message="Can you help me relax?">🌙 Help me relax</button>
+        </div>
+      </div>
+
+      <div class="sidebar-card disclaimer-card">
+        <h2>Please know</h2>
+        <p>MindCare AI provides general emotional support and is not a replacement for professional mental-health care.</p>
+        <p class="small-muted">If you are in crisis, please contact Tele-MANAS (14416) or emergency services (112 in India).</p>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<!-- BREATHING EXERCISE MODAL -->
+<div id="breathing-modal" class="modal-backdrop hidden">
+  <div class="modal breathing-modal" role="dialog" aria-modal="true" aria-label="Breathing exercise">
+    <button class="modal-close" id="breathing-close" aria-label="Close breathing exercise">&times;</button>
+    <h2>Let's breathe together</h2>
+    <div class="breathing-circle-wrap">
+      <div id="breathing-circle" class="breathing-circle">
+        <span id="breathing-phase-label">Ready?</span>
+      </div>
+    </div>
+    <p id="breathing-instructions" class="breathing-instructions">Press start whenever you're ready. We'll do a few gentle rounds together.</p>
+    <div class="breathing-controls">
+      <button id="breathing-start" class="header-btn">Start</button>
+      <button id="breathing-stop" class="header-btn header-btn-ghost hidden">Stop</button>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
