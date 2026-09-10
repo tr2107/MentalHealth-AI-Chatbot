@@ -25,19 +25,17 @@
     const card = document.createElement("div");
     card.className = "welcome-card";
     card.innerHTML = `
-      <h2>Hi, I'm MindCare AI 👋</h2>
+      <div class="welcome-logo">♡</div>
+      <h2>How are you feeling today?</h2>
       <p>I'm here to listen and help you talk through what's on your mind.</p>
-      <p>You can talk to me about:</p>
-      <ul>
-        <li>Stress</li>
-        <li>Exam or work pressure</li>
-        <li>Overthinking</li>
-        <li>Feeling overwhelmed</li>
-        <li>Everyday worries</li>
-        <li>General emotional wellbeing</li>
-      </ul>
-      <p>Your conversation is not permanently stored by this application.</p>
-      <div class="disclaimer">MindCare AI provides general emotional support and is not a replacement for professional mental-health care.</div>
+      <div class="welcome-pills">
+        <span class="welcome-pill">Stress</span>
+        <span class="welcome-pill">Overthinking</span>
+        <span class="welcome-pill">College pressure</span>
+        <span class="welcome-pill">Relationships</span>
+        <span class="welcome-pill">Low mood</span>
+      </div>
+      <div class="disclaimer">🔒 Your conversation is kept only for the current session. This chatbot provides general emotional support and is not a replacement for professional care.</div>
     `;
     chatWindow.appendChild(card);
   }
@@ -228,6 +226,20 @@
   breathingModal.addEventListener("click", (e) => {
     if (e.target === breathingModal) closeBreathingModal();
   });
+
+
+  chatInput.addEventListener("input", () => {
+    chatInput.style.height = "auto";
+    chatInput.style.height = Math.min(chatInput.scrollHeight, 140) + "px";
+  });
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      chatForm.requestSubmit();
+    }
+  });
+  const newChatBtn = document.getElementById("new-chat-btn");
+  if (newChatBtn) newChatBtn.addEventListener("click", () => clearBtn.click());
 
   /* ---------------- init ---------------- */
   renderWelcome();
